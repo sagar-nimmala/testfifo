@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_304915_test_fifo.GetWatsonData</api_name>
+        <client_callable>true</client_callable>
+        <description/>
+        <name>GetWatsonData</name>
+        <script><![CDATA[var GetWatsonData = Class.create();
+
+GetWatsonData.prototype = Object.extendsObject(AbstractAjaxProcessor, {
+
+      getClass: function () {
+			try { 
+              var desc = this.getParameter('sysparam_text');
+			  //var r = new sn_ws.RESTMessageV2('x_304915_watson_cl.TestWatson', 'Default GET');
+			 // var r = new sn_ws.RESTMessageV2('WatsonClassifier', 'Default GET');
+		      var r = new sn_ws.RESTMessageV2('x_304915_test_fifo.TestWebWatson', 'Default GET');
+               //r.setStringParameterNoEscape('textVal', 'Change AShiss');
+
+			  r.setStringParameterNoEscape('textVal', desc);
+		  
+			     var response = r.execute();
+				 var responseBody = response.getBody();
+				 var httpStatus = response.getStatusCode();
+				 var responsObj = JSON.parse(responseBody);
+				 var className = responsObj.classes[0].class_name;
+				 var confidence = responsObj.classes[0].confidence;
+
+             
+                              var json = new JSON();
+
+                              var results = {
+
+                                      "className": className,
+
+                                      "confidence": confidence
+
+                              };
+
+                              return json.encode(results);
+
+                      }
+		catch(ex) {
+		 var message = ex.message;
+			gs.error("error : "+message);
+			var json = new JSON();
+
+                              var results = {
+
+                                      "error": message
+
+                              };
+
+                              return json.encode(results);
+			
+		}        
+
+      }
+
+});]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-07-05 06:47:42</sys_created_on>
+        <sys_id>f8fcb90cdb2233009b56487039961961</sys_id>
+        <sys_mod_count>8</sys_mod_count>
+        <sys_name>GetWatsonData</sys_name>
+        <sys_package display_value="Test FIFO" source="x_304915_test_fifo">77437900db2233009b564870399619f1</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Test FIFO">77437900db2233009b564870399619f1</sys_scope>
+        <sys_update_name>sys_script_include_f8fcb90cdb2233009b56487039961961</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-07-05 07:42:27</sys_updated_on>
+    </sys_script_include>
+</record_update>

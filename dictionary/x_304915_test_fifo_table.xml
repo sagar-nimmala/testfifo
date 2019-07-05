@@ -1,3 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element extends="task" label="Test Fifo Table" max_length="40" name="x_304915_test_fifo_table" type="collection"/>
+    <element extends="task" label="Test Fifo Table" max_length="40" name="x_304915_test_fifo_table" type="collection">
+        <element label="Item No" max_length="20" name="item_no" read_only="true" type="string"/>
+        <element label="Product Code" max_length="20" name="product_code" type="string"/>
+        <element label="Product Name" max_length="100" name="product_name" read_only="true" type="string"/>
+        <element attributes="edge_encryption_enabled=true" label="Quantity" max_length="40" name="quantity" type="float"/>
+        <element attributes="edge_encryption_enabled=true" label="Unit Cost (CAD)" max_length="40" name="unit_cost_cad" type="float"/>
+        <element attributes="edge_encryption_enabled=true" label="Unit Cost (USD)" max_length="40" name="unit_cost_usd" read_only="true" type="float"/>
+    </element>
 </database>

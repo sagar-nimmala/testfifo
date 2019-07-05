@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_304915_test_fifo.HelloWorld</api_name>
+        <client_callable>true</client_callable>
+        <description/>
+        <name>HelloWorld</name>
+        <script><![CDATA[var HelloWorld = Class.create();
+HelloWorld.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
+   helloWorld:function() {
+	   //
+   
+              var desc = this.getParameter('sysparm_user_name');
+			  var r = new sn_ws.RESTMessageV2('x_304915_watson_cl.TestWatson', 'Default GET');
+			 // var r = new sn_ws.RESTMessageV2('WatsonClassifier', 'Default GET');
+		     // var r = new sn_ws.RESTMessageV2('x_304915_test_fifo.TestWebWatson', 'Default GET');
+               r.setStringParameterNoEscape('textVal', 'Change AShiss');
+
+			 // r.setStringParameterNoEscape('textVal', desc);
+		       
+			     var response = r.execute();
+				 var responseBody = response.getBody();
+				var responsObj = JSON.parse(responseBody);
+				 var className = responsObj.classes[0].class_name;
+				 var confidence = responsObj.classes[0].confidence;
+
+             return className+"::"+confidence; 
+                              
+   } 
+   
+ });]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-07-05 08:21:02</sys_created_on>
+        <sys_id>df165e4cdb6233009b56487039961930</sys_id>
+        <sys_mod_count>13</sys_mod_count>
+        <sys_name>HelloWorld</sys_name>
+        <sys_package display_value="Test FIFO" source="x_304915_test_fifo">77437900db2233009b564870399619f1</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Test FIFO">77437900db2233009b564870399619f1</sys_scope>
+        <sys_update_name>sys_script_include_df165e4cdb6233009b56487039961930</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-07-05 09:30:57</sys_updated_on>
+    </sys_script_include>
+</record_update>
