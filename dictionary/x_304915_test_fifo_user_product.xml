@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="User Product" max_length="40" name="x_304915_test_fifo_user_product" type="collection">
+        <element label="Product Code" mandatory="true" max_length="20" name="product_code" type="string"/>
+        <element attributes="edge_encryption_enabled=true" label="Qunatity" mandatory="true" max_length="40" name="qunatity" type="float"/>
+        <element attributes="edge_encryption_enabled=true" label="User" mandatory="true" max_length="32" name="user" reference="sys_user" type="reference"/>
+        <index name="index">
+            <element name="user"/>
+        </index>
+    </element>
+</database>
