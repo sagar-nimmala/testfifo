@@ -4,6 +4,13 @@
         <element label="Product Code" max_length="20" name="product_code" type="string"/>
         <element label="Product Name" max_length="100" name="product_name" read_only="true" type="string"/>
         <element attributes="edge_encryption_enabled=true" label="Quantity" max_length="40" name="quantity" type="float"/>
+        <element choice="3" default="WIP" label="Status" mandatory="true" max_length="50" name="status" read_only="true" type="string">
+            <choice>
+                <element inactive_on_update="false" label="WIP" sequence="1" value="WIP"/>
+                <element inactive_on_update="false" label="Approved" sequence="2" value="Approved"/>
+                <element inactive_on_update="false" label="Rejected" sequence="3" value="Rejected"/>
+            </choice>
+        </element>
         <element attributes="edge_encryption_enabled=true" label="Unit Cost (CAD)" max_length="40" name="unit_cost_cad" type="float"/>
         <element attributes="edge_encryption_enabled=true" label="Unit Cost (USD)" max_length="40" name="unit_cost_usd" read_only="true" type="float"/>
     </element>

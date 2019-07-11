@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="Department" max_length="40" name="x_304915_test_fifo_department" type="collection">
+        <element display="true" label="Department Name" max_length="100" name="department_name" type="string"/>
+        <element label="Department No" max_length="20" name="department_no" type="string"/>
+        <element attributes="edge_encryption_enabled=true" label="Department User" max_length="32" name="department_user" reference="sys_user" type="reference"/>
+        <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
+        <index name="index">
+            <element name="department_user"/>
+        </index>
+    </element>
+</database>
